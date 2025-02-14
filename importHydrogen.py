@@ -38,12 +38,12 @@ def con_rule2(model):
 model.con2 = pyo.Constraint(rule = con_rule2)
 
 def con_rule3(model):
-    return Vboat*rho_CH4*model.boatCH4*LHV_CH4/(1-losses_CH4) + Vboat*rho_NH3*model.boatsNH3*LHV_NH3/(1-losses_NH3) <= 140*10**12
+    return Vboat*rho_CH4*model.boatsCH4*LHV_CH4/(1-losses_CH4) + Vboat*rho_NH3*model.boatsNH3*LHV_NH3/(1-losses_NH3) <= 140*10**12
 model.con3 = pyo.Constraint(rule = con_rule3)
 
 
 # Specify the path towards your solver (gurobi) file
-solver = pyo.SolverFactory('...')
+solver = pyo.SolverFactory("C:/gurobi1201/win64/bin/gurobi_cl.exe")
 sol = solver.solve(model)
 
 # Print here the number of CH4 boats and NH3 boats
