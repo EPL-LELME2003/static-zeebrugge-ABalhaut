@@ -1,6 +1,8 @@
 #Augustin Balhaut 34282100
 import pyomo.environ as pyo
 
+
+
 # Create a Pyomo model
 model = pyo.ConcreteModel()
 
@@ -43,10 +45,12 @@ model.con3 = pyo.Constraint(rule = con_rule3)
 
 
 # Specify the path towards your solver (gurobi) file
-solver = pyo.SolverFactory("C:/gurobi1201/win64/bin/gurobi_cl.exe")
+solver = pyo.SolverFactory('gurobi', executable = "C:/gurobi1201/win64/bin/gurobi_cl.exe")
 sol = solver.solve(model)
 
 # Print here the number of CH4 boats and NH3 boats
+print("Number of CH4 boats: ", model.boatsCH4())
+print("Number of NH3 boats: ", model.boatsNH3())    
 ##########################################
 ############ CODE TO ADD HERE ############
 ##########################################
